@@ -1,0 +1,18 @@
+version: '3.4'
+
+services: 
+  db:
+    image: ${DOCKER_REGISTRY-}demodb
+    build:
+     context: .
+     dockerfile: Db/Dockerfile
+  demoscs:
+    image: ${DOCKER_REGISTRY-}demoscs
+    ports:
+      - 32774:443
+      - 32773:80
+    build:
+      context: .
+      dockerfile: DemoSCS/Dockerfile
+    depends_on:
+      - db

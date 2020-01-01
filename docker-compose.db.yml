@@ -1,0 +1,8 @@
+version: '3.4'
+
+services: 
+  db:
+    image: ${DOCKER_REGISTRY-}demodb
+    build:
+      context: .
+      dockerfile: Db/Dockerfile
